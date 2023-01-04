@@ -1,13 +1,13 @@
-import React from 'react'
-import { StyleSheet, Image } from 'react-native'
+import React from "react";
+import { StyleSheet, Image } from "react-native";
 
-function ImageViewer({placeholderImageSource}) {
-  return (
-      <Image source={placeholderImageSource} style={styles.image} />
-  )
+function ImageViewer({ placeholderImageSource, selectedImage }) {
+  const imageSource =
+    selectedImage !== null ? {uri: selectedImage} : placeholderImageSource;
+  return <Image source={imageSource} style={styles.image} />;
 }
 
-export default ImageViewer
+export default ImageViewer;
 
 const styles = StyleSheet.create({
   image: {
