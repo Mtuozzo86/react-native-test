@@ -13,14 +13,10 @@ export default function App() {
   const [showAppOptions, setShowAppOptions] = useState(false);
 
   function onReset() {
-    setShowAppOptions(false)
+    setShowAppOptions(false);
   }
-  function onAddSticker() {
-    
-  }
-  function onSaveImageAsync() {
-    
-  }
+  function onAddSticker() {}
+  function onSaveImageAsync() {}
 
   const pickImageAsync = async () => {
     let result = await ImagePicker.launchImageLibraryAsync({
@@ -42,28 +38,33 @@ export default function App() {
           placeholderImageSource={PlaceholderImage}
           selectedImage={selectedImage}
         />
-        {showAppOptions ? (
-          <View style={styles.optionsContainer}>
-            <View style={styles.optionsRow}>
-              <IconButton icon="refresh" label="Reset" onPress={onReset}/>
-              <CircleButton onPress={onAddSticker}/>
-              <IconButton icon="save-alt" label="Save" onPress={onSaveImageAsync}/>
-            </View>
-          </View>
-        ) : (
-          <View style={styles.footerContainer}>
-            <Button
-              onPress={pickImageAsync}
-              theme="primary"
-              label="Choose a photo"
-            />
-            <Button
-              label="Use this photo"
-              onPress={() => setShowAppOptions(true)}
-            />
-          </View>
-        )}
       </View>
+      {showAppOptions ? (
+        <View style={styles.optionsContainer}>
+          <View style={styles.optionsRow}>
+            <IconButton icon="refresh" label="Reset" onPress={onReset} />
+            <CircleButton onPress={onAddSticker} />
+            <IconButton
+              icon="save-alt"
+              label="Save"
+              onPress={onSaveImageAsync}
+            />
+          </View>
+        </View>
+      ) : (
+        <View style={styles.footerContainer}>
+          <Button
+            onPress={pickImageAsync}
+            theme="primary"
+            label="Choose a photo"
+          />
+          <Button
+            label="Use this photo"
+            onPress={() => setShowAppOptions(true)}
+          />
+        </View>
+      )}
+
       <StatusBar style="auto" />
     </View>
   );
@@ -72,23 +73,23 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#25292e',
-    alignItems: 'center',
+    backgroundColor: "#25292e",
+    alignItems: "center",
   },
   imageContainer: {
-    flex:1, 
-    paddingTop: 58
+    flex: 1,
+    paddingTop: 58,
   },
   footerContainer: {
     flex: 1 / 3,
-    alignItems: 'center',
+    alignItems: "center",
   },
   optionsContainer: {
     position: "absolute",
     bottom: 80,
   },
   optionsRow: {
-    alignItems: 'center',
-    flexDirection: 'row',
+    alignItems: "center",
+    flexDirection: "row",
   },
 });
